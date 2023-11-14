@@ -145,3 +145,65 @@ body {
 .action-delete {
     color: #c9556a;
 }
+
+.logic-container{
+    width: 90%;
+    margin: 5% auto;
+    justify-content: center;
+    background: #f9f9f9;
+    box-shadow: 0px 0px 20px 3px #dfdada;
+    border: solid 5px #c9c9c947;
+    padding: 1em;
+    font-size: 1.3em;
+}
+
+.logic-container h2{
+    width: 100%;
+    text-align: center;
+    color: #1b3f65;
+}
+
+.form-logic{
+}
+.info-extract {margin: auto;padding: 2em;}
+
+.info-extract h4{border-left: solid 8px #3cb3af;padding-left: 5px;color: #3cb3af;margin-bottom: 1em;}
+
+.info-extract label{
+    font-weight: bold;
+}
+.info-extract input{
+    padding: 5px 1em;
+    width: 70%;
+    margin: 0px 1em;
+}
+.info-extract button{
+    border: none;
+    padding: 5px 2em;
+    background: #3cb3af;
+    color: white;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.info-extract button:hover{
+    background: #368f8c;
+}
+.info-extract ul{
+    margin-top: 1em;
+}
+.info-extract ul li{
+    color: #3cb3af;
+}
+
+.normal-span{
+    
+}
+
+.sql-query{
+    color: #cf546a !important;
+}
+
+.info-extract ul li span{
+    font-weight: bold;
+    color: black;
+}

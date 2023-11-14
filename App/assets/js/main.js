@@ -61,4 +61,64 @@ function toggleFormMode(e, corretor = {id: '', cpf: "", creci: "", nome: ""}){
         
         btnFormCancel.classList.add("hidden");
     }
+
+}
+
+async function getCityAPI(city){
+    const where = encodeURIComponent(JSON.stringify({
+        "name": city
+      }));
+
+      const AppID = '';
+      const RestAPIKey = '';
+
+      const response = await fetch(
+        `https://parseapi.back4app.com/classes/Estadoscidadesbrasil_City?limit=10&keys=name&where=${where}`,
+        {
+          headers: {
+            'X-Parse-Application-Id': AppID, // This is your app's application id
+            'X-Parse-REST-API-Key': RestAPIKey, // This is your app's REST API key
+          }
+        }
+      );
+      const data = await response.json(); // Here you have the data that you need
+      const found = data.results[0]?.name;
+      return (found?true:false);
+}
+
+async function extractInfo(e){
+    e.preventDefault();
+
+    const imovelTipo = document.querySelector("#imovel-tipo");
+    const imovelCidade = document.querySelector("#imovel-cidade");
+    const imovelBairro = document.querySelector("#imovel-bairro");
+    const backendsqlquery = document.querySelector('#backend-sqlquery');
+
+    const infolink = document.querySelector("#info-link").value;
+    // TODO: validação do link
+
+    const tipo = infolink.slice(infolink.indexOf("/imovel/") + 8, infolink.indexOf("-com-"));
+    const bairroCidade = infolink.slice(infolink.indexOf("-em-")+4, infolink.indexOf("/",infolink.indexOf("-em-")));
+    const bairroCidadeArray = bairroCidade.split("-");
+
+    let prevElement = "";
+    let cidade = "";
+    for(let i = bairroCidadeArray.length-1; i>=0; i--){
+        const element = bairroCidadeArray[i];
+
+        const city = element.charAt(0).toUpperCase() + element.slice(1) + ' ' + prevElement;
+        if(await getCityAPI(city.trim())){
+            cidade = city.trim().toLowerCase().replace(" ","-");
+            break;
+        }else{
+        }
+        prevElement = city;
+    }
+
+    let bairro = bairroCidade.replace(cidade,"").slice(0, -1);
+
+    imovelTipo.innerHTML = tipo;
+    imovelCidade.innerHTML = cidade;
+    imovelBairro.innerHTML = bairro;
+    backendsqlquery.innerHTML = `<span>Backend:</span> <span class="sql-query">SELECT * FROM</span> imoveis <span class="sql-query">WHERE cidade = </span> ${cidade} <span class="sql-query"> AND bairro = </span>${bairro} <span class="sql-query">AND tipo = </span>${tipo}</span> <span class="sql-query"> LIMIT 3</span>`
 }

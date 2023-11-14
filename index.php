@@ -84,7 +84,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imível Guide Teste Técnico Backend</title>
+    <title>Imóvel Guide Teste Técnico Backend</title>
 
     <link rel="stylesheet" href="/App/assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -133,6 +133,24 @@
             </tr>
             <?php }?>
         </table>
+   </section>
+   <section class="logic-container">
+    <h2>Teste de Lógica</h2>
+    <form class="form-logic">
+        <div class="info-extract">
+            <h4>Extração e consulta</h4>
+            <label for="">Link:</label>
+            <input type="text" name="info-link" id="info-link" placeholder="https://imovelguide.com.br/imovel/apartamento-com-3-quartos-a-venda-110-m2-em-vila-andrade-sao-paulo/1317073">
+            <button onclick="extractInfo(event);">Extrair</button>
+            <ul>
+                <li><span>Tipo do imóvel:</span> <i id="imovel-tipo"></i></li>
+                <li><span>Cidade:</span> <i id="imovel-cidade"></i></li>
+                <li><span>Bairro:</span> <i id="imovel-bairro"></i></li>
+                <li id="backend-sqlquery"><span>Backend:</span></li>
+            </ul>
+            
+        </div>
+    </form>
    </section>
 </body>
 </html>
