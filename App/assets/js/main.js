@@ -110,8 +110,8 @@ async function extractInfo(e){
         if(await getCityAPI(city.trim())){
             cidade = city.trim().toLowerCase().replace(" ","-");
             break;
-        }else{
         }
+
         prevElement = city;
     }
 
