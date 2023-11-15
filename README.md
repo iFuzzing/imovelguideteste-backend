@@ -1,6 +1,6 @@
 # Projeto Backend PHP - Teste Técnico 🚀
 
-Teste técnico e de logíca da Imóvel Guide
+Teste técnico e de logíca da [Imóvel Guide](https://www.imovelguide.com.br/)
 
 ## Tecnologias Utilizadas 🛠️
 
@@ -50,4 +50,5 @@ Para a resolução foi utilizada uma API da Back4app, certifique-se de ter um AP
 3. Com 4 colunas: `id | name | cpf | creci`
 4. Configure corretamente a conexão com o banco de dados
 5. Inicialize o servidor e acesse a página principal: `index.php`
+6. Configure seu APP ID e API KEY no `App/assets/js/main.js` (teste de lógica)
 
